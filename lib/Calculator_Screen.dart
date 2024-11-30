@@ -133,47 +133,61 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
 
   // Handle button taps
   void onBtnTap(String value) {
-    setState(() {
-      if (value == "C") {
-        expression = "";
-        lastActionWasCalculation = false;
-      } else if (value == "D") {
-        if (expression.isNotEmpty) {
-          expression = expression.substring(0, expression.length - 1);
-        }
-        lastActionWasCalculation = false;
-      } else if (value == "=") {
-        calculateResult();
-      } else if (value == "+/-") {
-        toggleNegative();
-      } else if (value == "√") {
-        applySquareRoot();
-      } else if (value == "%") {
-        applyPercentage();
-      } else if (isOperator(value)) {
-        // Prevent consecutive operators or operator at the start
-        if (expression.isNotEmpty &&
-            !isOperator(expression[expression.length - 1])) {
+  setState(() {
+    if (value == "C") {
+      // Clear the expression
+      expression = "";
+      lastActionWasCalculation = false;
+    } else if (value == "D") {
+      // Delete the last character
+      if (expression.isNotEmpty) {
+        expression = expression.substring(0, expression.length - 1);
+      }
+      lastActionWasCalculation = false;
+    } else if (value == "=") {
+      // Perform calculation
+      calculateResult();
+    } else if (value == "+/-") {
+      // Toggle negative sign
+      toggleNegative();
+    } else if (value == "√") {
+      // Apply square root
+      applySquareRoot();
+    } else if (value == "%") {
+      // Apply percentage
+      applyPercentage();
+    } else if (isOperator(value)) {
+      // Replace the last operator if one already exists
+      if (expression.isNotEmpty) {
+        if (isOperator(expression[expression.length - 1])) {
+          // Replace the last operator
+          expression = expression.substring(0, expression.length - 1) + value;
+        } else {
+          // Add the operator to the expression
           expression += value;
         }
-        lastActionWasCalculation = false;
-      } else {
-        if (lastActionWasCalculation) {
-          expression = value;
-        } else {
-          // Check if the current number exceeds the maximum length
-          if (_getCurrentNumber().length < maxNumberLength) {
-            // Check if the current number already contains a decimal point
-            if (value == "." && _getCurrentNumber().contains(".")) {
-              return; // Do not add another decimal point
-            }
-            expression += value;
-          }
-        }
-        lastActionWasCalculation = false;
       }
-    });
-  }
+      lastActionWasCalculation = false;
+    } else {
+      // Add numbers and decimal point
+      if (lastActionWasCalculation) {
+        // Reset expression after calculation
+        expression = value;
+      } else {
+        // Prevent adding too many digits
+        if (_getCurrentNumber().length < maxNumberLength) {
+          // Prevent multiple decimal points
+          if (value == "." && _getCurrentNumber().contains(".")) {
+            return; // Do not add another decimal point
+          }
+          expression += value;
+        }
+      }
+      lastActionWasCalculation = false;
+    }
+  });
+}
+
 
   // Get the current number being entered
   String _getCurrentNumber() {
@@ -196,6 +210,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
         expression = result % 1 == 0 ? result.toStringAsFixed(0) : result.toString();
         lastActionWasCalculation = true;
       });
+    //  
     } catch (e) {
       setState(() {
         expression = "Cannot divide by zero";
@@ -214,7 +229,8 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
     }
     lastActionWasCalculation = false;
   }
-
+  
+  // Apply square root
   void applySquareRoot() {
     if (expression.isEmpty) return; // if expression is empty return nothing
     try {
@@ -284,10 +300,10 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
 
     return operands.last;
   }
-
-  void _processOperation(List<double> operands, String operator) {
-    final b = operands.removeLast();
-    final a = operands.isNotEmpty ? operands.removeLast() : 0.0;
+  // Process the operation
+  void _processOperation(List<double> operands, String operator) { // Process the operation0
+    final b = operands.removeLast(); // Second operand
+    final a = operands.isNotEmpty ? operands.removeLast() : 0.0; // First operand
 
     switch (operator) {
       case "+":
