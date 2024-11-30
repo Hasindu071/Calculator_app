@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 import 'history_screen.dart'; // Import the history screen
+import 'package:auto_size_text/auto_size_text.dart'; // Import the auto_size_text package
 
 class CalculatorScreen extends StatefulWidget { 
   const CalculatorScreen({super.key});
@@ -14,12 +15,13 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
   String expression = ""; // Store the entire input expression
   List<String> history = []; // Store the history of calculations
   bool lastActionWasCalculation = false; // Track if the last action was a calculation
+  final int maxNumberLength = 15; // Maximum length for each number
 
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
 
-    return Scaffold(
+    return Scaffold( // Scaffold widget
       body: SafeArea(
         bottom: false,
         child: Column(
@@ -33,13 +35,16 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                 child: Container(
                   padding: const EdgeInsets.all(24),
                   alignment: Alignment.bottomRight,
-                  child: Text(
+                  child: AutoSizeText(
                     expression.isEmpty ? "0" : expression,
                     style: const TextStyle(
                       fontSize: 48,
                       fontWeight: FontWeight.bold,
                     ),
                     textAlign: TextAlign.end,
+                    maxLines: 1,
+                    minFontSize: 20,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
               ),
@@ -156,11 +161,29 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
         if (lastActionWasCalculation) {
           expression = value;
         } else {
-          expression += value;
+          // Check if the current number exceeds the maximum length
+          if (_getCurrentNumber().length < maxNumberLength) {
+            // Check if the current number already contains a decimal point
+            if (value == "." && _getCurrentNumber().contains(".")) {
+              return; // Do not add another decimal point
+            }
+            expression += value;
+          }
         }
         lastActionWasCalculation = false;
       }
     });
+  }
+
+  // Get the current number being entered
+  String _getCurrentNumber() {
+    final operators = ['+', '-', '*', '/'];
+    for (int i = expression.length - 1; i >= 0; i--) {
+      if (operators.contains(expression[i])) {
+        return expression.substring(i + 1);
+      }
+    }
+    return expression;
   }
 
   // Calculate the result of the expression
