@@ -20,12 +20,12 @@ If you found this app helpful, please like 👍 and subscribe ❤️ to our YouT
 - **History Screen**: View the history of past calculations.
 
 ---
-Screenshots
+## Screenshots
 
-Calculator Screen
+- Calculator Screen
 ![WhatsApp Image 2024-12-11 at 11 28 53](https://github.com/user-attachments/assets/bb7e0516-48be-4b02-b575-c0cc9886d69e)
 
-History Screen
+- History Screen
 
 ![WhatsApp Image 2024-12-11 at 11 28 53 (1)](https://github.com/user-attachments/assets/64fb9e79-1863-4d40-b702-a56e2af5107a)
 
