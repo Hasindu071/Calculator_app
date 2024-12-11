@@ -8,7 +8,7 @@ Run on iOS and Android
 - Run on Android: https://youtu.be/RGL-rO26pDY?si=pvFezravgyV5uFps.
 
    Like and Subscribe
-If you found this app helpful, please like and subscribe to our YouTube channel.
+If you found this app helpful, please like 👍 and subscribe ❤️ to our YouTube channel.
 ---
 
 ## **Features**
