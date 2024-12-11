@@ -4,8 +4,8 @@ A **beautiful and functional calculator app** built using **Flutter**. This proj
 
 Run on iOS and Android
 
-Run on iOS: https://youtu.be/xg7F1tUZuoM?si=W1exXJ86Q1MWbkXf.
-Run on Android: https://youtu.be/RGL-rO26pDY?si=pvFezravgyV5uFps.
+- Run on iOS: https://youtu.be/xg7F1tUZuoM?si=W1exXJ86Q1MWbkXf.
+- Run on Android: https://youtu.be/RGL-rO26pDY?si=pvFezravgyV5uFps.
 ---
 
 ## **Features**
