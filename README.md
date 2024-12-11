@@ -7,14 +7,12 @@ A **beautiful and functional calculator app** built using **Flutter**. This proj
 ## **Features**
 
 - **Basic Operations**: Addition, subtraction, multiplication, and division.
+- **Dark Mode**: Elegant dark theme for comfortable usage.
 - **Responsive UI**: Adapts to different screen sizes and orientations.
-- **Elegant Design**: Minimalistic and user-friendly interface.
 - **Error Handling**: Handles invalid inputs gracefully.
-- **Memory Functions**: (Optional) Save and recall values.
+- **History Screen**: View the history of past calculations.
 
 ---
-
-## **Getting Started**
 
 ### Prerequisites
 
@@ -22,7 +20,26 @@ A **beautiful and functional calculator app** built using **Flutter**. This proj
 - Dart installed
 - An IDE (e.g., Android Studio, VS Code) with Flutter and Dart plugins
 
+### Installation Steps
 
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/calculator-app.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd calculator-app
+   ```
+3. Get the dependencies:
+   ```bash
+   flutter pub get
+   ```
+4. Run the app:
+   ```bash
+   flutter run
+   ```
+
+---
 
 ## **Folder Structure**
 
@@ -30,9 +47,9 @@ A **beautiful and functional calculator app** built using **Flutter**. This proj
 calculator-app/
   |- lib/
       |- main.dart       # Entry point of the app
+      |- Calculator_Screen.dart  # Main calculator functionality
+      |- history_screen.dart     # History screen for past calculations
       |- widgets/        # Custom widgets
-      |- screens/        # Screen layouts
-      |- utils/          # Utility functions
   |- assets/
       |- screenshots/    # App screenshots
   |- pubspec.yaml        # Dependencies
@@ -66,11 +83,6 @@ We welcome contributions! Follow these steps to contribute:
 
 ---
 
-## **License**
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
-
----
 
 ## **Acknowledgments**
 
