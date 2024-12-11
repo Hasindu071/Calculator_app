@@ -2,6 +2,10 @@
 
 A **beautiful and functional calculator app** built using **Flutter**. This project demonstrates the use of Flutter widgets to create an intuitive and responsive user interface for performing arithmetic operations.
 
+Run on iOS and Android
+
+Run on iOS: https://youtu.be/xg7F1tUZuoM?si=W1exXJ86Q1MWbkXf.
+Run on Android: https://youtu.be/RGL-rO26pDY?si=pvFezravgyV5uFps.
 ---
 
 ## **Features**
